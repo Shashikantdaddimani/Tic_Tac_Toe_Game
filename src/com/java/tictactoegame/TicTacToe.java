@@ -20,11 +20,21 @@ public class TicTacToe {
 		}
 	}
 	/*
+	 * Logic for Printing the showBoard the TicTacToe Game Board.
+	 */
+	public void showBoard() {
+		System.out.println(board[1] + " | " + board[2] + " | " + board[3]);
+		System.out.println("---------");
+		System.out.println(board[4] + " | " + board[5] + " | " + board[6]);
+		System.out.println("---------");
+		System.out.println(board[7] + " | " + board[8] + " | " + board[9]);
+	}
+	/*
 	 * Logic for checking Player selected letter
 	 */
 	public void check() {
 		System.out.println("please select your choice letter: 'X' or 'Y' ");
-		char choice = scanner.next().charAt(0);
+		char choice = scanner.next().toUpperCase().charAt(0);
 		if(choice=='X')
 		{
 			System.out.println( "Player selected letter is:"+'X');
@@ -44,18 +54,14 @@ public class TicTacToe {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Welcom to the Tic Tac Toe Game program");
-		/*
-		 * Printing the Tic Tac Toe game Board.
-		 */
-		System.out.println(board[1] + " | " + board[2] + " | " + board[3]);
-		System.out.println("---------");
-		System.out.println(board[4] + " | " + board[5] + " | " + board[6]);
-		System.out.println("---------");
-		System.out.println(board[7] + " | " + board[8] + " | " + board[9]);
+		
+		
 		/*
 		 * Creating object of class name by calling the method 
 		 */
 		TicTacToe tictactoe = new TicTacToe();
+		tictactoe.initialize();
+		tictactoe.showBoard();
 		tictactoe.check();
 	}
 
