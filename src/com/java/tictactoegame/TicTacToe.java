@@ -5,7 +5,7 @@ package com.java.tictactoegame;
  */
 import java.util.Scanner;
 
-public class Tic_Tac_Toe_Game {
+public class TicTacToe {
 
 	static char board[] = new char[10];
 	static char player, computer;
@@ -17,6 +17,23 @@ public class Tic_Tac_Toe_Game {
 	public void initialize() {
 		for (int i = 1; i < 10; i++) {
 			board[i] = ' ';
+		}
+	}
+	/*
+	 * Logic for checking Player selected letter
+	 */
+	public void check() {
+		System.out.println("please select your choice letter: 'X' or 'Y' ");
+		char choice = scanner.next().charAt(0);
+		if(choice=='X')
+		{
+			System.out.println( "Player selected letter is:"+'X');
+			System.out.println("Computer selected letter is:"+'O');
+			
+		}else if (choice == 'Y')
+		{
+			System.out.println("Player selected letter is:"+'O');
+			System.out.println("Computer selected letter is:"+'X');
 		}
 	}
 
@@ -35,7 +52,11 @@ public class Tic_Tac_Toe_Game {
 		System.out.println(board[4] + " | " + board[5] + " | " + board[6]);
 		System.out.println("---------");
 		System.out.println(board[7] + " | " + board[8] + " | " + board[9]);
-
+		/*
+		 * Creating object of class name by calling the method 
+		 */
+		TicTacToe tictactoe = new TicTacToe();
+		tictactoe.check();
 	}
 
 }
