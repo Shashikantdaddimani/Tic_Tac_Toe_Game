@@ -19,6 +19,7 @@ public class TicTacToe {
 			board[index] = ' ';
 		}
 	}
+
 	/*
 	 * logic for select the letter for playing the game
 	 */
@@ -55,6 +56,16 @@ public class TicTacToe {
 			System.out.println("Invalid Choice");
 		}
 	}
+	/*
+	 * Logic for checking FreeSpace
+	 */
+	public static boolean isEmpty() {
+		if(board[playLocation]==' ') {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 	/*
 	 * Logic for checking Player selected letter
@@ -82,7 +93,9 @@ public class TicTacToe {
 		createBoard();
 		getPlayerChoice();
 		showBoard();
+		isEmpty();
 		userMove();
+		
 	}
 
 }
