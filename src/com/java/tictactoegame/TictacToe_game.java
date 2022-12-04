@@ -56,27 +56,31 @@ public class TictacToe_game {
 		System.out.println(board[7] + " | " + board[8] + " | " + board[9]);
 	}
 	/*
-	 * UC4 Method Name: makeMove 
-	 * Description: method to make user to move to desired
-	 * location Algorithm: It takes user input from index 1 to 9. If you enter
-	 * invalid index or try to move to occupied position it prints error message
-	 * else it moves the user letter to desired location.
-	 */
+     * UC4
+     * Method Name: playerTurn
+     * Description: method to make user to move to desired location
+     * Algorithm: It takes user input from index 1 to 9.if player entered position contains free space
+     * then player can move to that location. Here we use break to get out from the while loop and
+     * executes the last statement.
+     */
 
-	private static void makeMove() {
-		System.out.println("Enter Location 1-9 to Make Move");
-		playLocation = input.nextInt();
-		if (playLocation < 10 && playLocation > 0) {
-			board[playLocation] = player;
-			showBoard();
-			checkFreeSpace();
-			winner();
-			makeMove();
+	 private static void playerTurn()
+	    {
+	        int playerMove;
+	        while (true)
+	        {
+	            
+	            System.out.println("Choose your location(1-9): ");
+	            playerMove = input.nextInt();
+	            if (board[playerMove] == ' ')
+	            {
+	                break;
+	            }
 
-		} else {
-			System.out.println("Invalid Choice");
-		}
-	}
+	        }
+	        System.out.println("Player choose:: " + playerMove);
+	        board[playerMove] = player;
+	    }
 	/*
 	 * UC5 Method Name: checkFreeSpace 
 	 * Description: method to check if space is available in the board. 
@@ -137,7 +141,24 @@ public class TictacToe_game {
 			System.exit(0);
 		}
 	}
+	 /*UC8
+     * Method Name: computerTurn
+     * Description: method to make computer move to random location in board
+     * Algorithm: After user move, computer automatically move to random position using
+     * random method.
+     */
+	private static void computerTurn() {
+		int computerMove;
+		while (true) {
+			computerMove = (int) Math.floor(Math.random() * 10) % 9 + 1;
+			if (board[computerMove] == ' ') {
+				break;
+			}
 
+		}
+		System.out.println("Computer choose:: " + computerMove);
+		board[computerMove] = computer;
+	}
 	/*
 	 * Program execution starts from main method
 	 */
@@ -146,8 +167,13 @@ public class TictacToe_game {
 		checkToss();
 		createEmptyBoard();
 		chooseLetter();
-		showBoard();
-		makeMove();
+		while (true) {
+			playerTurn();
+			computerTurn();
+			showBoard();
+			checkFreeSpace();
+			winner();
+		}
 	}
 
 }
