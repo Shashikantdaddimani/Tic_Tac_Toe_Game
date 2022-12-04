@@ -73,12 +73,41 @@ public class TictacToe_game {
 		if (playLocation < 10 && playLocation > 0) {
 			board[playLocation] = player;
 			showBoard();
+			checkFreeSpace();
 			makeMove();
 
 		} else {
 			System.out.println("Invalid Choice");
 		}
 	}
+	/*UC5
+     * Method Name: checkFreeSpace
+     * Description: method to check if space is available in the board.
+     * Algorithm: It checks free space is available or not before make a move and
+     * count the number of spaces available.It extends UC4.
+     */
+	private static void checkFreeSpace()
+    {
+        boolean isSpaceAvailable = false;
+        int numOfFreeSpaces = 0;
+        for(int index=1;index<board.length;index++)
+        {
+            if((board[index] == ' '))
+            {
+                isSpaceAvailable = true;
+                numOfFreeSpaces++;
+            }
+        }
+        if(isSpaceAvailable == false)
+        {
+            System.err.println("Board is full! You can't make another move");
+            System.exit(0);
+        }
+        else
+        {
+            System.out.println("Free space is available! you have "+numOfFreeSpaces+ " moves left");
+        }
+    }
 
 	/*
 	 * Program execution starts from main method
