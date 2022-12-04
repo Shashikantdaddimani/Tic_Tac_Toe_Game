@@ -108,11 +108,30 @@ public class TictacToe_game {
             System.out.println("Free space is available! you have "+numOfFreeSpaces+ " moves left");
         }
     }
-
+	 /**UC6
+     *Method Name: checkFirstPlayer
+     * Description : method to check who plays first computer or user
+     * Algorithm: random generates two values 1 and 2. if it is 1 or 2. 
+     * then depending on Player and computer to  decide to take position
+     */
+	 public static void checkToss() {
+	    	Random random = new Random();
+	        int tossResult = random.nextInt(2)+1;
+	        System.out.println("Genarated random Number is :"+tossResult);
+	        System.out.println("\nChoose 1 for Heads or 2 for Tails");
+	        int coinSelect = input.nextInt();
+	        if (coinSelect == tossResult) {
+	            System.out.println("\nPlayer Won The Toss! Player Starts");
+	        } else {
+	            System.out.println("\nComputer Won The Toss! Computer Starts");
+	        }
+	    }
 	/*
 	 * Program execution starts from main method
 	 */
 	public static void main(String[] args) {
+		System.out.println("Welcome to the TicTacToe Game");
+		checkToss();
 		createEmptyBoard();
 		chooseLetter();
 		showBoard();
