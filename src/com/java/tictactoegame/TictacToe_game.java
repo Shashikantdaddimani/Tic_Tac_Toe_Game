@@ -140,6 +140,22 @@ public class TictacToe_game {
 			System.out.println("Player win the game");
 			System.exit(0);
 		}
+		else if ((board[1] == computer && board[2] == computer && board[3] == computer)
+				|| (board[4] == computer && board[5] == computer && board[6] == computer)
+				|| (board[7] == computer && board[8] == computer && board[9] == computer)
+				|| (board[1] == computer && board[5] == computer && board[9] == computer)
+				|| (board[3] == computer && board[5] == computer && board[7] == computer)
+				|| (board[1] == computer && board[4] == computer && board[7] == computer)
+				|| (board[2] == computer && board[5] == computer && board[8] == computer)
+				|| (board[3] == computer && board[6] == computer && board[9] == computer)) {
+			showBoard();
+			System.out.println("Computer win the game");
+			System.exit(0);
+		} else if (board[1] != ' ' && board[2] != ' ' && board[3] != ' ' && board[4] != ' ' && board[5] != ' '
+				&& board[6] != ' ' && board[7] != ' ' && board[8] != ' ' && board[9] != ' ') {
+			System.out.println("Board is full game is draw");
+			System.exit(0);
+		}
 	}
 	 /*UC8
      * Method Name: computerTurn
@@ -159,6 +175,7 @@ public class TictacToe_game {
 		System.out.println("Computer choose:: " + computerMove);
 		board[computerMove] = computer;
 	}
+	
 	/*
 	 * Program execution starts from main method
 	 */
@@ -168,11 +185,32 @@ public class TictacToe_game {
 		createEmptyBoard();
 		chooseLetter();
 		while (true) {
-			playerTurn();
-			computerTurn();
-			showBoard();
-			checkFreeSpace();
-			winner();
+			
+			boolean coinSelect = false;
+			if(coinSelect==true) {
+				checkFreeSpace();
+				playerTurn();	
+				winner();		
+				checkFreeSpace();
+				computerTurn();
+				showBoard();
+				winner();
+				
+				
+			}else {
+				checkFreeSpace();
+				computerTurn();
+				winner();
+				checkFreeSpace();
+				playerTurn();
+				showBoard();
+				winner();
+				
+			
+			}
+			
+			
+			
 		}
 	}
 
